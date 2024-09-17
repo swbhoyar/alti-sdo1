@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersion>1</activeVersion>
+    <developerName>Case_Analysis</developerName>
+    <masterLabel>Case Analysis</masterLabel>
+    <relatedEntity>Account</relatedEntity>
+    <relatedField>Account.Case_Analysis__c</relatedField>
+    <templateVersions>
+        <content>You’re a Sales representative, and you need to Wrte summary of all open cases
+for account {!$Input:Account.Id}. 
+When I ask you to summarize the open cases, you must strictly follow my instructions below.
+
+Instructions:
+&quot;&quot;&quot;
+Do not mention Account Reference you are summarizing.
+Mention how many open cases there are and what the case issues are.
+Follow below format for writing summary
+- Case Number: 
+    - Issue:   Summarize the open cases in bullet points no longer than 100 characters.
+                   Use clear, concise, and straightforward language using the active voice and strictly avoiding the use of filler words and phrases and redundant language.
+    Involve sentiment analysis for each case and give information in below format.
+    -Customer Sentiment: Do Sentiment analysis for 
+                                               -polarity of a text like (positive, negative, neutral) 
+                                              - emotion detection  like (angry, happy, sad, etc) 
+     -Sales Prospect: Do Intent Analysis to consider it as prospect for selling.
+     -Need Urgent Attention: Based on sentiment analysis tell how urgently we need to pay attention to  this case.
+Highlight the case that needs to be handled urgently and also provide Case Number
+Use the following information to write the summary: {!$Flow:Get_Open_Cases_for_Account.Prompt}. 
+Do attribute any positive or negative traits in the summary.
+&quot;&quot;&quot;
+
+Now create the summary.
+
+</content>
+        <inputs>
+            <apiName>RelatedEntity</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4_32k</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Open_Cases_for_Account</definition>
+            <parameters>
+                <definition>SOBJECT://Account</definition>
+                <isRequired>true</isRequired>
+                <parameterName>RelatedEntity</parameterName>
+                <valueExpression>{!$Input:Account}</valueExpression>
+            </parameters>
+            <referenceName>Flow:Get_Open_Cases_for_Account</referenceName>
+        </templateDataProviders>
+        <versionNumber>1</versionNumber>
+    </templateVersions>
+    <templateVersions>
+        <content>You’re a Sales Representative, and you need to write summary of all open cases for account {!$Input:Account.Id}. 
+When I ask you to summarize the open cases, you must strictly follow my instructions below.
+
+Instructions:
+&quot;&quot;&quot;
+Do not mention Account Reference you are summarizing.
+Mention how many open cases there are and what the case issues are.
+Follow below format for writing summary.
+- Case Number: 
+    - Issue:   Summarize the open cases in bullet points no longer than 100 characters.
+                   Use clear, concise, and straightforward language using the active voice and strictly avoiding the use of filler words and phrases and redundant language.
+    Do sentiment analysis for each case and give information in below format.
+    -Customer Sentiment: Do Sentiment analysis for 
+                                               -polarity of a text like (positive, negative, neutral) 
+                                              - detect emotion like (angry, happy, sad, etc) 
+     -Sales Prospect: Do Intent Analysis to consider it as prospect for selling.
+     -Immediate Resolution: Based on sentiment analysis tell how urgently we need to pay attention to this case.
+Highlight the case that needs to be handled urgently and also provide Case Number
+Use the following information to write the summary: {!$Flow:Get_Open_Cases_for_Account.Prompt}. 
+Do attribute any positive or negative traits in the summary.
+&quot;&quot;&quot;
+
+Now create the summary.
+
+</content>
+        <inputs>
+            <apiName>RelatedEntity</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4_32k</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Open_Cases_for_Account</definition>
+            <parameters>
+                <definition>SOBJECT://Account</definition>
+                <isRequired>true</isRequired>
+                <parameterName>RelatedEntity</parameterName>
+                <valueExpression>{!$Input:Account}</valueExpression>
+            </parameters>
+            <referenceName>Flow:Get_Open_Cases_for_Account</referenceName>
+        </templateDataProviders>
+        <versionNumber>2</versionNumber>
+    </templateVersions>
+    <templateVersions>
+        <content>You’re a Sales Representative, and you need to write summary of all open cases for account {!$Input:Account.Id}. 
+When I ask you to summarize the open cases, you must strictly follow my instructions below.
+
+Instructions:
+&quot;&quot;&quot;
+Do not mention Account Reference you are summarizing.
+Mention how many open cases there are and what the case issues are.
+Follow below format for writing summary.
+- Case Number: 
+    - Issue:   Summarize the open cases in bullet points no longer than 100 characters.
+                   Use clear, concise, and straightforward language using the active voice and strictly avoiding the use of filler words and phrases and redundant language.
+    Do sentiment analysis for each case and give information in below format.
+    -Customer Sentiment: Do Sentiment analysis for 
+                                               -polarity of a text like (positive, negative, neutral) 
+                                              - detect emotion like (angry, happy, sad, etc) 
+     -Sales Prospect: Do Intent Analysis to consider it as prospect for selling.
+     -Immediate Resolution: Based on sentiment analysis tell how urgently we need to pay attention to this case.
+Highlight the case that needs to be handled urgently and also provide Case Number
+Use the following information to write the summary: {!$Flow:Get_Open_Cases_for_Account.Prompt}. 
+Do attribute any positive or negative traits in the summary.
+&quot;&quot;&quot;
+
+Now create the summary.
+
+</content>
+        <inputs>
+            <apiName>RelatedEntity</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT35Turbo</primaryModel>
+        <status>Draft</status>
+        <templateDataProviders>
+            <definition>flow://Get_Open_Cases_for_Account</definition>
+            <parameters>
+                <definition>SOBJECT://Account</definition>
+                <isRequired>true</isRequired>
+                <parameterName>RelatedEntity</parameterName>
+                <valueExpression>{!$Input:Account}</valueExpression>
+            </parameters>
+            <referenceName>Flow:Get_Open_Cases_for_Account</referenceName>
+        </templateDataProviders>
+        <versionNumber>3</versionNumber>
+    </templateVersions>
+    <type>einstein_gpt__fieldCompletion</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

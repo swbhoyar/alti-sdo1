@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersion>1</activeVersion>
+    <developerName>Lead_priority_List</developerName>
+    <masterLabel>Lead priority List</masterLabel>
+    <relatedEntity>Lead</relatedEntity>
+    <relatedField>Lead.Lead_priority_list__c</relatedField>
+    <templateVersions>
+        <content>You’re a Sales Representative, and you need to find &quot;10 Leads based on Customer Interaction that you have added in description field of Task associated with each Lead&quot; 
+When I ask you to Prioritize 10 Leads for this week, you must strictly follow my instructions below.
+
+Instructions:
+&quot;&quot;&quot;
+-check if tasks associated with lead is present .
+-if tasks are present for lead, Analyse only those tasks and involve only those leads in response that you will generate.
+- look for terminology like &apos;&apos;To:&quot;, &quot;Body&quot; in description field of each task to differentiate between email and other mode of customer interaction.
+-if task has email content, Analyse it as if it was sent to lead or received from lead Then Analyse the content after &quot;Body:&quot;.
+- Now Do Sentiment analysis and Intent Analysis of the description field of all tasks associated with each lead
+- Compare the Above analysis of all leads to come to the conclusion if customer is showing interest in buying .
+-Based on the above comparison give me only 10 Leads that you should focus on.
+when you have prepared the response give response in below format:
+- Lead name:
+- Number of tasks Associated with this Lead: if no tasks present do not display this lead
+-Interaction Summary: Summarize the description field of all tasks associated with this lead and then generate a summary from all these summaries here in no longer than 100 characters.
+                          Do attribute any positive or negative traits in the summary. and number the final leads present in response.
+                          Use clear, concise, and straightforward language using the active voice and strictly avoiding the use of filler words and phrases and redundant language.
+Use the following information for generating response :{!$Apex:Lead_Prioritization.Prompt}
+
+&quot;&quot;&quot;
+
+Now create response.
+</content>
+        <inputs>
+            <apiName>RelatedEntity</apiName>
+            <definition>SOBJECT://Lead</definition>
+            <referenceName>Input:Lead</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4Turbo</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>apex://Lead_Prioritization</definition>
+            <parameters>
+                <definition>SOBJECT://Lead</definition>
+                <isRequired>true</isRequired>
+                <parameterName>RelatedEntity</parameterName>
+                <valueExpression>{!$Input:Lead}</valueExpression>
+            </parameters>
+            <referenceName>Apex:Lead_Prioritization</referenceName>
+        </templateDataProviders>
+        <versionNumber>1</versionNumber>
+    </templateVersions>
+    <type>einstein_gpt__fieldCompletion</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

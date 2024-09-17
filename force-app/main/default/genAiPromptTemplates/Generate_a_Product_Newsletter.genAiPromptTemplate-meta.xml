@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersion>2</activeVersion>
+    <description>This Flex prompt template will generate the product newsletter to the customers, when ever a new product is introduced.</description>
+    <developerName>Generate_a_Product_Newsletter</developerName>
+    <masterLabel>Generate a Product Newsletter</masterLabel>
+    <templateVersions>
+        <content>You’re a sales representative from GenWatt writing a newsletter to customers about the company&apos;s current products.  
+GenWatt sells widgets and your target customers are young adults with apartments. Our products are more affordable and easier to install than competitors’ products. 
+You should get customers interested in a sample of our products and special offers from this month.
+When I ask you to create the newsletter, you must strictly follow my instructions below.
+
+Instructions: 
+&quot;&quot;&quot;
+Introduce the product offerings in a newsletter no longer than five paragraphs.
+Use clear and straightforward language using the active voice and strictly avoiding the use of filler words and phrases and redundant language. Be conversational.
+Use the following product and campaign information to write the newsletter: 
+Do not attribute any negative traits in the summary.
+End with a call to action for readers to look at our website for these offers.
+&quot;&quot;&quot;
+
+Now create the newsletter.
+
+</content>
+        <inputs>
+            <apiName>Product_Name</apiName>
+            <definition>SOBJECT://Product2</definition>
+            <masterLabel>Product Name</masterLabel>
+            <referenceName>Input:Product_Name</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT35Turbo</primaryModel>
+        <status>Published</status>
+        <versionNumber>1</versionNumber>
+    </templateVersions>
+    <templateVersions>
+        <content>You’re a sales representative from GenWatt writing a newsletter to customers about the company&apos;s current products.  
+GenWatt sells widgets and your target customers are young adults with apartments. Our products are more affordable and easier to install than competitors’ products. 
+You should get customers interested in a sample of our products and special offers from this month.
+When I ask you to create the newsletter, you must strictly follow my instructions below.
+
+Instructions: 
+&quot;&quot;&quot;
+Introduce the product offerings in a newsletter no longer than five paragraphs.
+Use clear and straightforward language using the active voice and strictly avoiding the use of filler words and phrases and redundant language. Be conversational.
+Use the following product and campaign information to write the newsletter: {!$Flow:Get_Products_and_Campaign.Prompt}
+Do not attribute any negative traits in the summary.
+End with a call to action for readers to look at our website for these offers.
+&quot;&quot;&quot;
+
+Now create the newsletter.
+
+</content>
+        <inputs>
+            <apiName>Product_Name</apiName>
+            <definition>SOBJECT://Product2</definition>
+            <masterLabel>Product Name</masterLabel>
+            <referenceName>Input:Product_Name</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT35Turbo</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Products_and_Campaign</definition>
+            <parameters>
+                <definition>SOBJECT://Product2</definition>
+                <isRequired>true</isRequired>
+                <parameterName>Product_Name</parameterName>
+                <valueExpression>{!$Input:Product_Name}</valueExpression>
+            </parameters>
+            <referenceName>Flow:Get_Products_and_Campaign</referenceName>
+        </templateDataProviders>
+        <versionNumber>2</versionNumber>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

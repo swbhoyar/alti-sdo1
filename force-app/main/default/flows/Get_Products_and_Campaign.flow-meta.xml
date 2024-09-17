@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <assignments>
+        <name>Get_Information</name>
+        <elementSubtype>AddPromptInstructions</elementSubtype>
+        <label>Get Information</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <assignmentItems>
+            <assignToReference>$Output.Prompt</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>Please prepare an news letter, related to the product name {!$Input.Product_Name.Name} and also add few features,  and  {!$Input.Product_Name.Description} of the product, 
+It should not be more than 50 words.
+</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>This flow generates the product descriptions and service campaigns for the current products to it&apos;s customers.</description>
+    <environments>Default</environments>
+    <interviewLabel>Get Products {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Get Products New</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>PromptFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <capabilityTypes>
+            <name>FlexTemplate://Generate_a_Product_Newsletter</name>
+            <capabilityName>FlexTemplate://Generate_a_Product_Newsletter</capabilityName>
+            <inputs>
+                <name>Product_Name</name>
+                <capabilityInputName>Product_Name</capabilityInputName>
+                <dataType>SOBJECT://Product2</dataType>
+                <isCollection>false</isCollection>
+            </inputs>
+        </capabilityTypes>
+        <connector>
+            <targetReference>Get_Information</targetReference>
+        </connector>
+        <triggerType>Capability</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>8</activeVersionNumber>
+    <description>This flow generates the product descriptions and sends the newsletter of the same to it&apos;s  customers.</description>
+    <masterLabel>Get Products New</masterLabel>
+</FlowDefinition>

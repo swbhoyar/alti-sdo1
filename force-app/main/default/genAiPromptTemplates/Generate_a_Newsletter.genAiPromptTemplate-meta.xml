@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <developerName>Generate_a_Newsletter</developerName>
+    <masterLabel>Generate a Newsletter</masterLabel>
+    <templateVersions>
+        <content>You’re a sales representative from GenWatt writing a newsletter to customers about the company&apos;s current products and campaigns.  
+GenWatt sells widgets and your target customers are young adults with apartments. Our products are more affordable and easier to install than competitors’ products. 
+You should get customers interested in a sample of our products and special offers from this month.
+When I ask you to create the newsletter, you must strictly follow my instructions below.
+
+Instructions: 
+&quot;&quot;&quot;
+Introduce the product offerings in a newsletter no longer than ten paragraphs.
+Use clear and straightforward language using the active voice and strictly avoiding the use of filler words and phrases and redundant language. Be conversational.
+Use the following product and campaign information to write the newsletter.
+
+Do not attribute any negative traits in the summary.
+End with a call to action for readers to look at our website for these offers.
+&quot;&quot;&quot;
+
+Now create the newsletter.
+
+</content>
+        <inputs>
+            <apiName>Product_Descriptions</apiName>
+            <definition>SOBJECT://Product2</definition>
+            <masterLabel>Product Descriptions</masterLabel>
+            <referenceName>Input:Product_Descriptions</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Product_Service_Campaign_for_the_customers</apiName>
+            <definition>SOBJECT://ProductServiceCampaign</definition>
+            <masterLabel>Product Service Campaign for the customers</masterLabel>
+            <referenceName>Input:Product_Service_Campaign_for_the_customers</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT35Turbo</primaryModel>
+        <status>Draft</status>
+        <versionNumber>1</versionNumber>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersion>1</activeVersion>
+    <developerName>Lead_Prioritization</developerName>
+    <masterLabel>Lead Prioritization</masterLabel>
+    <templateVersions>
+        <content>You’re a Sales Representative, and you need to find &quot;10 Leads based on Customer Interaction that you have added in description field of Task associated with each Lead&quot; 
+When I ask you to Prioritize 10 Leads for this week, you must strictly follow my instructions below.
+
+Instructions:
+&quot;&quot;&quot;
+-check if tasks associated with lead is present .
+-if tasks are present for lead ,Analyse only those tasks and involve only those leads in response that you will generate.
+- Do Sentiment analysis and Intent Analysis of the description field of all tasks associated with each lead
+- Compare the Above analysis of all leads
+-Based on the above comparison give me only 10 Leads that you consider having maximum likelihood of closing earliest.
+when you have prepared the response give response in below format:
+- Lead name:
+- Number of tasks Associated with this Lead :
+-Call Summary: Summarize the description field of all tasks associated with this lead here in no longer than 100 characters.
+                                      Use clear, concise, and straightforward language using the active voice and strictly avoiding the use of filler words and phrases and redundant language.
+Use the following information for generating response :{!$Apex:Top_Ten_Lead_Prioritization.Prompt} 
+Do attribute any positive or negative traits in the summary. and number the final leads present in response.
+&quot;&quot;&quot;
+
+Now create response.
+</content>
+        <inputs>
+            <apiName>User_1</apiName>
+            <definition>SOBJECT://User</definition>
+            <masterLabel>User 1</masterLabel>
+            <referenceName>Input:User_1</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4Turbo</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>apex://Top_Ten_Lead_Prioritization</definition>
+            <parameters>
+                <definition>SOBJECT://User</definition>
+                <isRequired>true</isRequired>
+                <parameterName>User_1</parameterName>
+                <valueExpression>{!$Input:User_1}</valueExpression>
+            </parameters>
+            <referenceName>Apex:Top_Ten_Lead_Prioritization</referenceName>
+        </templateDataProviders>
+        <versionNumber>1</versionNumber>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>
